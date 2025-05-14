@@ -24,7 +24,7 @@ This project analyzes Federal Reserve minutes, statements, transcripts, and pres
   <ul className="list-disc pl-6">
     <li>Code.ipynb: Jupyter notebook containing the analysis code.</li>
     <li>sentiment_scores_enriched.csv: Enriched sentiment scores after FinBERT analysis.</li>
-    <li>text_extracted.csv: Extracted text data from Federal Reserve communications.</li>
+    <li>text_extracted.csv: Extracted text data from Federal Reserve communications. To run further sentiment analysis using the raw data, the scraped minutes, statements, green book, and transcripts 1968-2025 can be found on Kaggle (@federicogalli12). </li>
   </ul>
 
   <h2 className="text-xl mt-4">License</h2>
