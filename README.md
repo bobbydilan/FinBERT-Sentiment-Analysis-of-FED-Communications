@@ -1,39 +1,49 @@
-<div className="p-6"> <h1 className="text-2xl font-bold">FinBERT Sentiment Analysis of Federal Reserve Communications</h1> <h2 className="text-xl mt-4">Description</h2> <p>
-This project analyzes Federal Reserve minutes, statements, transcripts, and press releases using FinBERT for sentiment analysis. The analysis is enriched with additional data to provide a comprehensive view of the sentiment trends over time. </p>
+# FinBERT Sentiment Analysis of Federal Reserve Communications
 
-  <h2 className="text-xl mt-4">Dataset Information</h2>
-  <ul className="list-disc pl-6">
-    <li>Sentiment Scores File: <code>sentiment_scores_enriched.csv</code></li>
-    <li>Text Extracted File: <code>text_extracted.csv</code></li>
-    <li>The data consists of all publicly available Federal Reserve communications, including minutes, statements, transcripts, and press releases.</li>
-    <li>The sentiment scores are computed using FinBERT and enriched with additional data, such as economic indicators.</li>
-  </ul>
+## Description
 
-  <h2 className="text-xl mt-4">Installation</h2>
-  <p>Clone the repository:</p>
-  <pre className="bg-gray-100 p-2 rounded">git clone https://github.com/yourusername/FED-Sentiment-Analysis.git</pre>
-  <p>Install the required Python packages:</p>
-  <pre className="bg-gray-100 p-2 rounded">pip install -r requirements.txt</pre>
+This project analyzes Federal Reserve minutes, statements, transcripts, and press releases using **FinBERT** for sentiment analysis. The results are enriched with additional economic data to give a comprehensive view of sentiment trends over time.
 
-  <h2 className="text-xl mt-4">Usage</h2>
-  <p>Run the main analysis script:</p>
-  <pre className="bg-gray-100 p-2 rounded">jupyter notebook Code.ipynb</pre>
-  <p>Execute the notebook to perform sentiment analysis and data enrichment. The output sentiment scores and analysis results will be saved as <code>sentiment_scores_enriched.csv</code>.</p>
+## Repository contents
 
-  <h2 className="text-xl mt-4">File Structure</h2>
-  <ul className="list-disc pl-6">
-    <li>Code.ipynb: Jupyter notebook containing the analysis code.</li>
-    <li>sentiment_scores_enriched.csv: Enriched sentiment scores after FinBERT analysis.</li>
-    <li>text_extracted.csv: Extracted text data from Federal Reserve communications. To run further sentiment analysis using the raw data, the scraped minutes, statements, green book, and transcripts 1968-2025 can be found on Kaggle (@federicogalli12). </li>
-  </ul>
+| File | Description |
+|---|---|
+| `full-scraping-and-analysis-code.ipynb` | Jupyter notebook with the full scraping and sentiment-analysis pipeline. |
+| `sentiment_scores_enriched.csv` | FinBERT sentiment scores enriched with additional economic indicators. |
+| `LICENSE` | MIT License. |
 
-  <h2 className="text-xl mt-4">License</h2>
-  <p>This project is licensed under the MIT License.</p>
+## Data
 
-  <h2 className="text-xl mt-4">Contact Information</h2>
-  <p>For any questions or feedback, feel free to contact:</p>
-  <ul className="list-disc pl-6">
-    <li>Federico Galli @bobbydylan3428123 on Discord </li>
-  </ul>
-</div>
+- The corpus covers publicly available Federal Reserve communications — minutes, statements, transcripts, and press releases.
+- Sentiment scores are computed with FinBERT and enriched with economic indicators.
+- The full scraped raw text (minutes, statements, Greenbook, and transcripts, 1968–2025) is available on Kaggle: **@federicogalli12**.
 
+## Getting started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/bobbydilan/FinBERT-Sentiment-Analysis-of-FED-Communications.git
+```
+
+Install the main dependencies:
+
+```bash
+pip install transformers torch pandas numpy matplotlib jupyter
+```
+
+Open and run the notebook:
+
+```bash
+jupyter notebook full-scraping-and-analysis-code.ipynb
+```
+
+Running the notebook reproduces the scraping and FinBERT sentiment analysis; the enriched output is saved as `sentiment_scores_enriched.csv`.
+
+## License
+
+This project is licensed under the MIT License — see [`LICENSE`](LICENSE) for details.
+
+## Contact
+
+For questions or feedback, reach out to Federico Galli on Discord: **@bobbydylan3428123**.
