@@ -1,39 +1,43 @@
-<div className="p-6"> <h1 className="text-2xl font-bold">FinBERT Sentiment Analysis of Federal Reserve Communications</h1> <h2 className="text-xl mt-4">Description</h2> <p>
-This project analyzes Federal Reserve minutes, statements, transcripts, and press releases using FinBERT for sentiment analysis. The analysis is enriched with additional data to provide a comprehensive view of the sentiment trends over time. </p>
+# FinBERT Sentiment Analysis of Federal Reserve Communications
 
-  <h2 className="text-xl mt-4">Dataset Information</h2>
-  <ul className="list-disc pl-6">
-    <li>Sentiment Scores File: <code>sentiment_scores_enriched.csv</code></li>
-    <li>Text Extracted File: <code>text_extracted.csv</code></li>
-    <li>The data consists of all publicly available Federal Reserve communications, including minutes, statements, transcripts, and press releases.</li>
-    <li>The sentiment scores are computed using FinBERT and enriched with additional data, such as economic indicators.</li>
-  </ul>
+Sentiment analysis of Federal Reserve communications from 1968 to 2025 — minutes, statements, transcripts, and press releases — using [FinBERT](https://huggingface.co/yiyanghkust/finbert-tone), a BERT model fine-tuned for financial text. The resulting sentiment scores are enriched with market and macroeconomic indicators to give a comprehensive view of Fed sentiment trends over time.
 
-  <h2 className="text-xl mt-4">Installation</h2>
-  <p>Clone the repository:</p>
-  <pre className="bg-gray-100 p-2 rounded">git clone https://github.com/yourusername/FED-Sentiment-Analysis.git</pre>
-  <p>Install the required Python packages:</p>
-  <pre className="bg-gray-100 p-2 rounded">pip install -r requirements.txt</pre>
+## What it does
 
-  <h2 className="text-xl mt-4">Usage</h2>
-  <p>Run the main analysis script:</p>
-  <pre className="bg-gray-100 p-2 rounded">jupyter notebook Code.ipynb</pre>
-  <p>Execute the notebook to perform sentiment analysis and data enrichment. The output sentiment scores and analysis results will be saved as <code>sentiment_scores_enriched.csv</code>.</p>
+1. **Scrapes** publicly available Federal Reserve communications (FOMC minutes, statements, transcripts, Beige Books, press releases) from federalreserve.gov, extracting text from both HTML pages and PDFs.
+2. **Scores sentiment** for each document with the `yiyanghkust/finbert-tone` model (PyTorch + Hugging Face Transformers), aggregated per meeting date and per document type.
+3. **Enriches** the scores with market and macro data — S&P 500 7-day change, VIX, inflation, the federal funds rate, unemployment, 10-year and 3-month Treasury yields, and the yield-curve spread — via `yfinance` and `pandas-datareader` (FRED).
 
-  <h2 className="text-xl mt-4">File Structure</h2>
-  <ul className="list-disc pl-6">
-    <li>Code.ipynb: Jupyter notebook containing the analysis code.</li>
-    <li>sentiment_scores_enriched.csv: Enriched sentiment scores after FinBERT analysis.</li>
-    <li>text_extracted.csv: Extracted text data from Federal Reserve communications. To run further sentiment analysis using the raw data, the scraped minutes, statements, green book, and transcripts 1968-2025 can be found on Kaggle (@federicogalli12). </li>
-  </ul>
+## Repository contents
 
-  <h2 className="text-xl mt-4">License</h2>
-  <p>This project is licensed under the MIT License.</p>
+| File | Description |
+| --- | --- |
+| `full-scraping-and-analysis-code.ipynb` | End-to-end notebook: scraping, text extraction, FinBERT scoring, and data enrichment. Originally written for Google Colab (the Drive-mount cells can be skipped when running locally). |
+| `sentiment_scores_enriched.csv` | Final output: per-date sentiment scores by document type (`Statement_Score`, `Minutes_Score`, `Transcript_Score`, `Internal_Score`, `Overall_Score`) alongside the enrichment variables listed above, from 1968 onward. |
+| `requirements.txt` | Python dependencies. |
+| `LICENSE` | MIT license. |
 
-  <h2 className="text-xl mt-4">Contact Information</h2>
-  <p>For any questions or feedback, feel free to contact:</p>
-  <ul className="list-disc pl-6">
-    <li>Federico Galli @bobbydylan3428123 on Discord </li>
-  </ul>
-</div>
+## How to run
 
+```bash
+pip install -r requirements.txt
+jupyter notebook full-scraping-and-analysis-code.ipynb
+```
+
+Execute the notebook top to bottom to re-scrape, re-score, and re-enrich. The finished dataset is already included as `sentiment_scores_enriched.csv`, so the notebook only needs to be re-run to refresh or extend the data. A GPU is recommended for the FinBERT scoring step.
+
+## Data sources
+
+- **Federal Reserve communications** — scraped from [federalreserve.gov](https://www.federalreserve.gov) (minutes, statements, transcripts, Beige Books, press releases).
+- **Raw scraped text (1968–2025)** — the full scraped corpus (minutes, statements, green book, transcripts) is available on Kaggle: [@federicogalli12](https://www.kaggle.com/federicogalli12).
+- **Market data** — S&P 500 and VIX via `yfinance`.
+- **Macro indicators** — inflation, federal funds rate, unemployment, Treasury yields via `pandas-datareader` (FRED).
+- **Sentiment model** — [`yiyanghkust/finbert-tone`](https://huggingface.co/yiyanghkust/finbert-tone).
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+## Contact
+
+Federico Galli — [@bobbydilan](https://github.com/bobbydilan) on GitHub.

@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+.AppleDouble
+._*
+__MACOSX/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model / cache artifacts
+*.pt
+*.pth
+.cache/

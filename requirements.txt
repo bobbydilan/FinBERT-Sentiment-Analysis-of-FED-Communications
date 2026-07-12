@@ -1,0 +1,14 @@
+beautifulsoup4
+matplotlib
+numpy
+pandas
+pandas-datareader
+pdfplumber
+python-dateutil
+requests
+seaborn
+statsmodels
+torch
+tqdm
+transformers
+yfinance
